@@ -1,14 +1,14 @@
 package com.amazon.pages;
 
-import com.amazon.utility.Driver;
+import com.amazon.utility.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AmazonMainPage {
+public class AmazonMainPage extends BasePage {
 
     public AmazonMainPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(id = "icp-nav-flyout")

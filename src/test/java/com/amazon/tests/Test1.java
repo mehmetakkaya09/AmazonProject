@@ -1,8 +1,7 @@
 package com.amazon.tests;
 
 import com.amazon.pages.AmazonMainPage;
-import com.amazon.utility.ConfigurationReader;
-import com.amazon.utility.Driver;
+import com.amazon.utility.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,39 +9,32 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
-public class Test1 {
-
-    WebDriver driver;
+public class Test1 extends BasePage {
+    Actions actions;
     AmazonMainPage page;
     @BeforeMethod
     public void setUp() {
         page = new AmazonMainPage();
-        driver = Driver.getDriver();
+        //actions = new Actions(driver);
     }
 
     @Test
     public void test1() {
-
         driver.get("https://www.amazon.com/");
-
-        Actions actions = new Actions(driver);
-        actions.moveToElement(page.languageDropDown).build().perform();
-        page.changeCountry.click();
-        page.changeRegion2class.click();
-        page.turkish2class.click();
-        page.saveButton2class.click();
-        Set<String> windowHandles = driver.getWindowHandles();
-        List<String> allWindowHandles = new ArrayList<>(windowHandles);
-        for (String windowHandle : allWindowHandles) {
-            if (!windowHandle.equals(driver.getWindowHandle())) {
-                driver.switchTo().window(windowHandle);
-                break;
-            }
-        }
+//        actions.moveToElement(page.languageDropDown).build().perform();
+//        page.changeCountry.click();
+//        page.changeRegion2class.click();
+//        page.turkish2class.click();
+//        page.saveButton2class.click();
+//        Set<String> windowHandles = driver.getWindowHandles();
+//        for (String windowHandle : windowHandles) {
+//            if (!windowHandle.equals(driver.getWindowHandle())) {
+//                driver.switchTo().window(windowHandle);
+//                break;
+//            }
+//        }
         page.searchBox.sendKeys("iphone13 512"+ Keys.ENTER);
         page.accept.click();
         page.firstIphone.click();
